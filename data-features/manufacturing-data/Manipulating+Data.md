@@ -10,7 +10,7 @@ import pandas as pd
 
 There are two data structures in Pandas you need to know how to work with. The first is the series object, a one-dimensional labeled array that represents a single column in your dataset. Which of the following two, essentially equal series would you rather work with?
 
-[dataframe-example](pic/dataframe-example.png) has no title attribute.
+![dataframe-example](pic/dataframe-example.png) has no title attribute.
 
 Clearly, the second series will be easier for you to analyze and manipulate. Having all elements share the same units and data type make give you the ability to apply series-wide operations. Because of this, Pandas series must be homogeneous. They're capable of storing any Python data type (integers, strings, floating point numbers, objects, etc.), but all the elements in a series must be of the same data type.
 
