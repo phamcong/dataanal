@@ -1,4 +1,4 @@
-[//]: # (Ref to Codeschool_Mastering-Github) 
+##### (Ref to https://www.dropbox.com/s/v1xu9cot95dgodv/CodeSchool_MasteringGithubCourse.pdf?dl=0) 
 ### Setting up ``.git-config`` file.
 + ``--local`` to set configuration for a single repo
 + ``--global`` to set configuration for your user
