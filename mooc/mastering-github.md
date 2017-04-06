@@ -1,8 +1,8 @@
 [//]: # (Ref to Codeschool_Mastering-Github) 
 ### Setting up ``.git-config`` file.
-``--local`` to set configuration for a single repo
-``--global`` to set configuration for your user
-``--system`` to set configuration for all users
++ ``--local`` to set configuration for a single repo
++ ``--global`` to set configuration for your user
++ ``--system`` to set configuration for all users
 
 #### Setting a configurations
 + Syntax: ``git config --local/--global/--system variable.name(user.name, color.ui, etc.) variable.value(phamcong, true, etc.)``
