@@ -1,2 +1,2 @@
-[comment]: <> (Ref to Codeschool_Mastering-Github)
+<!-- Ref to Codeschool_Mastering-Github -->
 
