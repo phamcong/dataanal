@@ -18,16 +18,15 @@ This only works within a git repository
 + Example: ``git config --global --list``
 
 #### Some necessary configurations
-+ Auto carriage return/line feed handling: ``git config --global core.autocrlf input`` (on Linux/Mac); ``git config --global core.autocrlf true`` (on Windows).
++ ``git config --global core.autocrlf input`` (on Linux/Mac); ``git config --global core.autocrlf true`` (on Windows) (Auto carriage return/line feed handling)
 
-+ Just pushed current branch to GitHub: ``git config --global push.default simple``.
++ ``git config --global push.default simple`` (Just pushed current branch to GitHub).
 
-+ Defaults all new branches to fetch then rebase: ``git config --global push.rebase true``.
++ ``git config --global push.rebase true`` (Defaults all new branches to fetch then rebase).
 
-+ Configuring Reuse Recorded Resolution (ReReRe): Records all fixes to merge conflicts. Reuses them automatically if the same conflict recurs (particulary useful when cherry picking to multiple branches or constantly rebasing): ``git config --global rerere.enabled true``.
-
-+ Configuring output colors: ``git config --global color.ui true``.
++ ``git config --global rerere.enabled true`` (Configuring Reuse Recorded Resolution (ReReRe): Records all fixes to merge conflicts. Reuses them automatically if the same conflict recurs (particulary useful when cherry picking to multiple branches or constantly rebasing).
++ ``git config --global color.ui true``(Configuring output colors).
 
 + Configuring aliases:
-    - Configuring alias "git s" ``git config --global alias.s "status -s``
-    - Configuring alias "git lg"  ``git config --global alias.lg "log --online --decorate --all --graph``
+    - ``git config --global alias.s "status -s`` (Configuring alias "git s").
+    - ``git config --global alias.lg "log --online --decorate --all --graph`` (Configuring alias "git lg").
