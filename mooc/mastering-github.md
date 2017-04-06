@@ -18,21 +18,16 @@ This only works within a git repository
 + Example: ``git config --global --list``
 
 #### Some necessary configurations
-+ Auto carriage return/line feed handling.
-  
-  ``git config --global core.autocrlf input`` (on Linux/Mac); ``git config --global core.autocrlf true`` (on Windows)
-+ Just pushed current branch to GitHub.
-  
-  ``git config --global push.default simple``
-+ Defaults all new branches to fetch then rebase.
-  
-  ``git config --global push.rebase true``
-+ Configuring Reuse Recorded Resolution (ReReRe): Records all fixes to merge conflicts. Reuses them automatically if the same conflict recurs (particulary useful when cherry picking to multiple branches or constantly rebasing).
-  
-  ``git config --global rerere.enabled true``
-+ Configuring output colors:
-  
-  ``git config --global color.ui true``
++ Auto carriage return/line feed handling: ``git config --global core.autocrlf input`` (on Linux/Mac); ``git config --global core.autocrlf true`` (on Windows).
+
++ Just pushed current branch to GitHub: ``git config --global push.default simple``.
+
++ Defaults all new branches to fetch then rebase: ``git config --global push.rebase true``.
+
++ Configuring Reuse Recorded Resolution (ReReRe): Records all fixes to merge conflicts. Reuses them automatically if the same conflict recurs (particulary useful when cherry picking to multiple branches or constantly rebasing): ``git config --global rerere.enabled true``.
+
++ Configuring output colors: ``git config --global color.ui true``.
+
 + Configuring aliases:
     - Configuring alias "git s" ``git config --global alias.s "status -s``
     - Configuring alias "git lg"  ``git config --global alias.lg "log --online --decorate --all --graph``
