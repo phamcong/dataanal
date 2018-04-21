@@ -15,8 +15,8 @@
     
     
     \usepackage[T1]{fontenc}
-    % Nicer default font than Computer Modern for most use cases
-    \usepackage{palatino}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
 
     % Basic figure setup, for now with no caption control since it's done
     % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
@@ -62,6 +62,7 @@
     \usepackage{hyperref}
     \usepackage{longtable} % longtable support required by pandoc >1.10
     \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
     \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                                 % normalem makes italics be italics, not underlines
     
@@ -158,69 +159,73 @@
     \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
 \def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
 
-\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
-\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
 \expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
-\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
-\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
-\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
-\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
-\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
-\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
-\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
-\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
-\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
-\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
 \expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
 \expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
-\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
-\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
-\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
-\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
 \expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
 
 \def\PYZbs{\char`\\}
 \def\PYZus{\char`\_}
@@ -275,7 +280,8 @@
     
 
     
-    \subsection{Transforming Data}\label{transforming-data}
+    \hypertarget{transforming-data}{%
+\subsection{Transforming Data}\label{transforming-data}}
 
 Your goal during the data gathering phase is to record as much working
 data about your observations as possible since you never know which
@@ -305,8 +311,9 @@ Once you've used a few basic transformers, you will also learn about
 some data cleansing techniques that attempt to rectify problematic
 observations.
 
-    \subsubsection{Principal Component Analysis
-(PCA)}\label{principal-component-analysis-pca}
+    \hypertarget{principal-component-analysis-pca}{%
+\subsubsection{Principal Component Analysis
+(PCA)}\label{principal-component-analysis-pca}}
 
 Unsupervised learning aims to discover some type of hidden structure
 within your data. Without a label or correct answer to test against,
@@ -316,8 +323,9 @@ convert your possibly correlated features into a set of linearly
 uncorrelated ones, is the first unsupervised learning algorithm you'll
 study.
 
+\hypertarget{what-is-principal-component-analysis}{%
 \paragraph{What is principal component
-analysis}\label{what-is-principal-component-analysis}
+analysis}\label{what-is-principal-component-analysis}}
 
 \textbf{PCA falls into the group of dimensionality reduction
 algorithms}. \emph{In many real-world datasets and the problems they
@@ -369,13 +377,8 @@ with just a few calculated glimpses of an object, you can build a rather
 comprehensive understanding of it. PCA calculates those best view
 angles:
 
-\begin{figure}
-\centering
-\includegraphics{pic/telephone-best-view.png}
-\caption{telephone-best-view}
-\end{figure}
-
-\paragraph{How Does PCA Work?}\label{how-does-pca-work}
+\hypertarget{how-does-pca-work}{%
+\paragraph{How Does PCA Work?}\label{how-does-pca-work}}
 
 \textbf{PCA is one of the most popular techniques for dimensionality
 reduction}, and \emph{we recommend you always start with it when you
@@ -395,8 +398,9 @@ computed vectors}, \emph{more principal component can then be added to
 the list}. \textbf{This set of vectors form a new feature space that you
 can represent your samples with}.
 
+\hypertarget{on-dimensions-features-and-views}{%
 \subparagraph{On Dimensions, Features, and
-Views}\label{on-dimensions-features-and-views}
+Views}\label{on-dimensions-features-and-views}}
 
 Each sample in your dataset represents an observable phenomenon, such as
 an object in the real world. Each feature in your dataset tells you
@@ -415,12 +419,6 @@ assuming that the more variance expressed in a feature, the more
 important it is. In our telephone pole example, the frontal view had
 more variance than the bird's-eye view and so it was preferred by PCA.
 
-\begin{figure}
-\centering
-\includegraphics{pic/telephone-best-view.png}
-\caption{telephone-best-view}
-\end{figure}
-
 \emph{With the \textbf{newly computed features ordered by importance,
 dropping the least important features on the list intelligently reduces
 the number of dimensions needed to represent your dataset}, with minimal
@@ -431,7 +429,8 @@ a pre-processing step before sending your data through to other more
 processor-intensive algorithms. We'll look at more real life use cases
 in the next unit.
 
-\paragraph{When should I use PCA?}\label{when-should-i-use-pca}
+\hypertarget{when-should-i-use-pca}{%
+\paragraph{When should I use PCA?}\label{when-should-i-use-pca}}
 
 PCA, and in fact all dimesionality reduction methods, have three main
 uses: + To handle the clear goal of reducing the dimensionality and thus
@@ -503,7 +502,8 @@ so when you have a high dimensionality dataset, start by running PCA on
 it and then visualizing it. This will better help you understand your
 data before continuing.
 
-\subparagraph{Projecting a Shadow}\label{projecting-a-shadow}
+\hypertarget{projecting-a-shadow}{%
+\subparagraph{Projecting a Shadow}\label{projecting-a-shadow}}
 
 By transforming your samples into the feature space created by
 discarding under-prioritized features, a lower dimensional
@@ -516,38 +516,21 @@ dataset, the orange line represents the principal component direction,
 and the gray line represents the second principal component. The one
 that's going to get dropped:
 
-\begin{figure}
-\centering
-\includegraphics{pic/pca-projection-shadow.png}
-\caption{pca-projection-shadow}
-\end{figure}
-
 By dropping the gray component above, the goal is to project the 2D
 points onto 1D space. Move the original 2D samples to their closest spot
 on the line:
 
-\begin{figure}
-\centering
-\includegraphics{pic/pca-projection-shadow2.png}
-\caption{pca-projection-shadow2}
-\end{figure}
-
 Once you've projected all samples to their closest spot on the major
 principal component, a shadow, or lower dimensional representation has
 been formed:
-
-\begin{figure}
-\centering
-\includegraphics{pic/pca-projection-shadow3.png}
-\caption{pca-projection-shadow3}
-\end{figure}
 
 The summed distances traveled by all moved samples is equal to the total
 information lost by the projection. An an ideal situation, this lost
 information should be dominated by highly redundant features and random
 noise.
 
-\paragraph{SciKit-Learn and PCA}\label{scikit-learn-and-pca}
+\hypertarget{scikit-learn-and-pca}{%
+\paragraph{SciKit-Learn and PCA}\label{scikit-learn-and-pca}}
 
 To get started, import PCA from \texttt{sklearn.decomposition} and then
 create a new instance of the model setting the
@@ -557,7 +540,7 @@ features in your original dataset, since each computed component is a
 linear combination of your original features:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
         \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{decomposition} \PY{k}{import} \PY{n}{PCA}
         
         \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Datasets/students.data}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -573,7 +556,8 @@ linear combination of your original features:
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-PCA(copy=True, n\_components=2, whiten=False)
+PCA(copy=True, iterated\_power='auto', n\_components=2, random\_state=None,
+  svd\_solver='auto', tol=0.0, whiten=False)
 (649, 29)
 (649, 2)
 
@@ -608,7 +592,8 @@ exposes to you after you've trained your PCA model with the
   probabilities.
 \end{itemize}
 
-\paragraph{PCA Gotchas!}\label{pca-gotchas}
+\hypertarget{pca-gotchas}{%
+\paragraph{PCA Gotchas!}\label{pca-gotchas}}
 
 To use PCA effectively, you should be aware of its weaknesses. The first
 is that \textbf{PCA is sensitive to the scaling of your features}. PCA
@@ -649,9 +634,11 @@ and variance within your data and cannot discern any complex, nonlinear
 intricacies. For such cases, you will have to make use different
 dimensionality reduction algorithms, such as \textbf{Isomap}}.
 
-\paragraph{Knowledge checks}\label{knowledge-checks}
+\hypertarget{knowledge-checks}{%
+\paragraph{Knowledge checks}\label{knowledge-checks}}
 
-\subparagraph{Review Question 1}\label{review-question-1}
+\hypertarget{review-question-1}{%
+\subparagraph{Review Question 1}\label{review-question-1}}
 
 1/1 point (graded)
 
@@ -700,11 +687,14 @@ Which of these statements is wrong?
 
 \emph{Answer:} \textbf{D}
 
-    \subsubsection{PCA Lab}\label{pca-lab}
+    \hypertarget{pca-lab}{%
+\subsubsection{PCA Lab}\label{pca-lab}}
 
-\paragraph{Assignment 1}\label{assignment-1}
+\hypertarget{assignment-1}{%
+\paragraph{Assignment 1}\label{assignment-1}}
 
-\subparagraph{Lab Assignement 1}\label{lab-assignement-1}
+\hypertarget{lab-assignement-1}{%
+\subparagraph{Lab Assignement 1}\label{lab-assignement-1}}
 
 In this assignment, you're going to experiment with a real life
 armadillo sculpture scanned using a Cyberware 3030 MS 3D scanner at
@@ -713,12 +703,6 @@ Scanning Repository, and is a very dense 3D mesh consisting of 172974
 vertices! The mesh is available for you, located at
 /Module4/Datasets/\textbf{stanford\_armadillo.ply}. It is \emph{not} a
 Python file, so don't attempt to load it with a text editor!
-
-\begin{figure}
-\centering
-\includegraphics{pic/armadillo.png}
-\caption{armadillo}
-\end{figure}
 
 Open up the Module4/\textbf{assignment1.py} starter code and read
 through it carefully. You will notice the use of a new library, Plyfile.
@@ -746,7 +730,8 @@ Complete the following tasks:
   Re-run the application! Then, answer the questions below:
 \end{enumerate}
 
-\subparagraph{Lab Question 1}\label{lab-question-1}
+\hypertarget{lab-question-1}{%
+\subparagraph{Lab Question 1}\label{lab-question-1}}
 
 1 point possible (graded)
 
@@ -797,7 +782,8 @@ Which executed faster, RandomizedPCA or PCA?
 
 \emph{Answer:} \textbf{RandomizedPCA}
 
-\subparagraph{Lab Assignement 2}\label{lab-assignement-2}
+\hypertarget{lab-assignement-2}{%
+\subparagraph{Lab Assignement 2}\label{lab-assignement-2}}
 
 In Lab Assignment 1, you applied PCA to a dataset generated by
 3D-scanning an actual sculpture. Real life 3D objects are a good segue
@@ -854,7 +840,8 @@ early stages of the disease. The starter code over at
   then check out the resulting visualization.
 \end{enumerate}
 
-\subparagraph{Lab Question 1}\label{lab-question-1-1}
+\hypertarget{lab-question-1-1}{%
+\subparagraph{Lab Question 1}\label{lab-question-1-1}}
 
 1 point possible (graded)
 
@@ -899,7 +886,8 @@ is a mirror}.
 
 \emph{Answer:} ** **
 
-\subparagraph{Lab Question 2}\label{lab-question-2}
+\hypertarget{lab-question-2}{%
+\subparagraph{Lab Question 2}\label{lab-question-2}}
 
 2 point possible (graded)
 
@@ -971,9 +959,10 @@ this lab really, is to see how feature scaling alters your PCA results.
   Re-run your assignment and then answer the questions below:
 \end{enumerate}
 
-\emph{Answer:} ** ** ---
+\emph{Answer:} ** **
 
-\subparagraph{Lab Questions (Continued)}\label{lab-questions-continued}
+\hypertarget{lab-questions-continued}{%
+\subparagraph{Lab Questions (Continued)}\label{lab-questions-continued}}
 
 2 points possible (graded)
 
@@ -997,9 +986,827 @@ kidney disease?
 
 \emph{Answer:} ** **
 
+    \hypertarget{isomap}{%
+\subsubsection{Isomap}\label{isomap}}
+
+Similar to PCA, \textbf{Isomap is also an unsupervised learning
+technique that reduces the dimensionality of your dataset. No labels or
+classifications are needed to guide it except your raw data}. You can
+literally apply Isomap to any dataset during your exploratory analysis.
+In fact \emph{you should transform your high dimensionality datasets
+with Isomap when they do not exhibit the behavior you want, having been
+passed through PCA}.
+
+\textbf{PCA is faster than Isomap and works well in most situations, but
+its limitation is that it assumes a linear relationship exist between
+your features}. What happens when your data has a non-linear structure?
+Take for instance a set of images produced by photographing the rotation
+one of those fancy, \$1500 office chairs about its Y-axis. From a
+stationary camera's perspective, the rotation is a non-linear
+transformation, not well suited at all for PCA:
+
+\begin{longtable}[]{@{}c@{}}
+\toprule
+\begin{minipage}[b]{0.97\columnwidth}\centering
+\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.97\columnwidth}\centering
+\emph{Authman's Commando Chair: Non-linear, and linear transformation
+examples\ldots{}}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+In reality though, just by spinning the chair, you're really only
+altering a single degree of freedom. Dimensionality reduction aims to
+derive a set of degrees of freedom that can then be used to reproduce a
+lower dimensional embedding of your data, so a non-linear reduction
+algorithm should be able to recognize that within this image space, the
+sequence of pictures lie along a single-dimensional, continuous curve.
+
+On the other hand, if the camera were translated directly up and down
+rather than rotating the chair itself, then that would be an example of
+a linear transformation from the camera's perspective, and PCA and other
+linear reduction techniques would be better suited for reducing the
+dimensionality of the resulting dataset:
+
+\begin{longtable}[]{@{}c@{}}
+\toprule
+\begin{minipage}[b]{0.97\columnwidth}\centering
+\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.97\columnwidth}\centering
+\emph{Authman's Commando Chair: linear transformation examples (the
+camera were translated directly up and down rather than rotating)}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+In order to address non-linear situations, \textbf{Isomap uses an
+entirely different approach to the dimensionality reduction problem}.
+One that is highly efficient, albeit more processor intensive than PCA.
+Nonetheless, for non-linear relationships it is a must. \textbf{Its
+goal: to uncover the intrinsic, geometric-nature of your dataset, as
+opposed to simply capturing your datasets most variant directions}.
+
+\hypertarget{how-does-isomap-work}{%
+\paragraph{How Does Isomap Work?}\label{how-does-isomap-work}}
+
+Isomap operates by first computing each record's nearest neighbors. This
+is done by comparing each sample to every other sample in the dataset.
+Only a sample's K-nearest samples qualify for being included in its
+nearest-neighborhood samples list. A neighborhood graph is then
+constructed by linking each sample to its K-nearest neighbors. The
+result is similar to map of roads that is traversed in order to move
+from point to point.
+
+\begin{longtable}[]{@{}c@{}}
+\toprule
+\begin{minipage}[b]{0.97\columnwidth}\centering
+\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.97\columnwidth}\centering
+\emph{A comparison by \href{http://web.mit.edu/cocosci/josh.html}{Josh
+Tenenbaum} of the direct Euclidean vs manifold neighborhood path
+distances of the classic `swiss-roll', as appears in
+\href{http://web.mit.edu/cocosci/Papers/sci_reprint.pdf}{Science 290
+(5500), December 2000}.}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+You've already encountered one form of multi-dimensional scaling. Do you
+recall what it was? It was actually none other than PCA itself! Multi
+dimensional scaling is a process of taking samples in N-dimensional
+space, and representing them on some other M-dimensional space, while
+attempting to preserve the inter-sample distances as much as possible.
+If you're going from a lower to higher dimensionality, then the
+distances can be preserved perfectly. But when you reduce dimensions, as
+you've seen some information is lost.
+
+Fun fact, the actual distance formula used to calculate the K-nearest
+samples doesn't even have to be 100\% precise. As long as it works
+reasonably well for `close by' samples. The truth of the matter is that
+with Isomap, samples far away from one another aren't included in each
+other's neighborhood map, and therefore do not affect the final
+simplified manifold produced by multi dimensional scaling. Due to this,
+some very nice speed optimizations can be enacted with the distance
+calculations.
+
+\hypertarget{when-should-i-use-isomap}{%
+\paragraph{When Should I Use Isomap?}\label{when-should-i-use-isomap}}
+
+Isomap has so many real-world use cases. The most straightforward of
+which being whenever you believe a simpler surface can describe and
+preserve the inherent structure of your higher dimensionality dataset,
+and want to retrieve that simpler embedding.
+
+Isomap is better than linear methods when dealing with almost all types
+of real image and motion tracking. Recalling the expensive office chair
+example from earlier, either rotating the chair, having the camera zoom
+into the chair, or panning around the chair, etc. are all examples of
+very natural, non-linear motions we undertake often. If you're dataset
+comes from images captured in a natural way, or your data is
+characterized by similar types of motions, consider using isomap. Simply
+translating the camera up and down, or striding it left and right, are
+linear motions that aren't as common unless you're doing
+\href{https://www.youtube.com/watch?v=x4eLsRUbtBk}{this kind} of
+movement.
+
+Isomap can also be better than linear methods at estimating a more
+accurate distance metric between different observations of your samples.
+Consider the following image sequence of an air dancer being deformed in
+the wind:
+
+Even trained against the full set of images (plus any intermediary
+images), a linear model would calculate the distance between the first
+and last pictures using a straight-line, high dimensionality, Euclidean
+metric. This of course doesn't take into account the manifold's
+geometry. Isomap would do a better job by traversing the nearest
+neighborhood map:
+
+Another example of this would be trying to get from one spot on a sphere
+to another; the Euclidean distance would be the shortest path connecting
+the two locations, namely, a straight line. The manifold path on the
+other hand, would do a much better job sticking to the surface of the
+sphere, based on how far apart the neighborhood sampling is. Note: In
+the above graph, the orange isomap plot as been interpolated; a more
+accurate representation would be polyline segments connecting the four
+points in order.
+
+So long as the underlying relationship is non-linear, another area
+isomap tends excel at is the grouping and identifying of similar
+variations in similar data samples. Due to this, it is extremely useful
+as a preprocessor step before conducting supervised learning tasks, such
+as classification or regression. Even the official example of isomap in
+SciKit-Learn's documentation is of it being applied to group similar
+variations of handwritten digits, and outperforming PCA while doing so!
+
+\begin{longtable}[]{@{}c@{}}
+\toprule
+\tabularnewline
+\midrule
+\endhead
+\emph{73 Pepper Variations From Dr.~Baumler's Garden, Courtesy Denise
+Thornton}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Finally, isomap's benefits also include all the other reasons you would
+use PCA or any other dimensionality reduction technique, including
+visualization and data compression.
+
+\hypertarget{scikit-learn-and-isomap}{%
+\paragraph{SciKit-Learn and Isomap}\label{scikit-learn-and-isomap}}
+
+Isomap is a method of SciKit-Learn's manifold module:
+
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} 
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k}{import} \PY{n}{manifold}
 \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{iso} \PY{o}{=} \PY{n}{manifold}\PY{o}{.}\PY{n}{Isomap}\PY{p}{(}\PY{n}{n\PYZus{}neighbors}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{n\PYZus{}components}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{iso}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{df}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} Isomap(eigen\_solver='auto', max\_iter=None, n\_components=2, n\_jobs=1,
+            n\_neighbors=4, neighbors\_algorithm='auto', path\_method='auto', tol=0)
+\end{Verbatim}
+        
+    As with PCA, \textbf{n\_components} is the number of features you want
+your dataset projected onto, and n\_neighbors defines the neighborhood
+size used to create the node neighborhood map. Be sure to experiment
+with \textbf{n\_neighbors} particularly, as your neighborhood size will
+directly effect how the manifold mapping is generated:
+
+The \emph{larger} your \textbf{n\_neighbors} value is, the \emph{longer}
+it will take to calculate the node neighborhood map. In the above
+animation, the neighborhood sizes in order are: 2, 3, 4, 5, 6, 7, 8, 16,
+32, 64. Notice that at 64 connectivity, the manifold almost looks
+similar to PCA. You will have to experiment with the neighborhood
+connectivity in order to get the best results.
+
+That said, in addition to considering how many neighbors each sample
+should have, you also need to reflect on how many samples realistically
+even need to be collected in order for you to properly capture your
+lower dimensional manifold! A rule of thumb is the curvier your dataset
+is, and by curvier we mean the sharpness of the edges, the more dense
+your samples must be in order to capture its latent relationships:
+
+With your Isomap instance created, you can calculate your new feature
+set the same way you did with PCA using \texttt{fit()}. Fitting the data
+just calculates the basis of the lower dimensional encoding. To actually
+project your data into that space, transforming it by calling:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{manifold} \PY{o}{=} \PY{n}{iso}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{df}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{df shape: }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{df}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{manifold shape: }\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{manifold}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+df shape:  (649, 29)
+manifold shape:  (649, 2)
+
+    \end{Verbatim}
+
+    Unlike PCA, Isomap transformations are unidirectional so you will not be
+able to \texttt{.inverse\_transform()}your projected data back into your
+original feature space, even if it has the same number of dimensions as
+your original dataset.
+
+\textbf{Running Isomap is a lot slower than PCA} since a lot more is
+happening under the hood, particularly \textbf{for large n\_neighbors
+values}, but it provides a simple way to analyze and manipulate high
+dimensional samples in terms of its intrinsic nonlinear degrees of
+freedom. This is because \textbf{isomap attempts to keep the global
+structure of your data as it reduces its dimensionality}. You can use it
+in any case where nonlinear geometry degrades the effectiveness of PCA.
+
+\textbf{Isomap is also a bit more sensitive to noise than PCA}. Noisy
+data can actually act as a conduit to short-circuit the nearest
+neighborhood map, cause isomap to prefer the `noisy' but shorter path
+between samples that lie on the real geodesic surface of your data that
+would otherwise be well separated.
+
+When using unsupervised dimensionality reduction techniques, be sure to
+use the feature scaling on all of your features because the
+nearest-neighbor search that Isomap bases your manifold on will do
+poorly if you don't, and PCA will prefer features with larger variances.
+As explained within the labs' source code, SciKit-Learn's
+\textbf{StandardScaler} is a good-fit for taking care of scaling your
+data before performing dimensionality reduction.
+
+\hypertarget{knowledge-checks}{%
+\paragraph{Knowledge Checks}\label{knowledge-checks}}
+
+\hypertarget{review-question-1}{%
+\subparagraph{Review Question 1}\label{review-question-1}}
+
+1/1 point (graded)
+
+\emph{Which of the following explanations of isomap is true?}
+
+\begin{itemize}
+\item
+  Isomap can be used as a powerful noise removal tool, since a smooth
+  manifold is created by ``short circuiting'' the nearest neighbor map
+  when calculating distances
+\item
+  Isomap is usually faster than PCA because it's quicker to compute a
+  nearest neighbor map than to do matrix decomposition
+\item
+  \textbf{A one sentence summary of isomap's implementation is that at
+  its core, it is essentially a node distance map that has been fed into
+  a special type of PCA correct}
+\item
+  Isomap will not function without a completely accurate distance
+  metric, since it needs to know the precise distance to every single
+  sample, including distant ones
+\end{itemize}
+
+\hypertarget{review-question-2}{%
+\subparagraph{Review Question 2}\label{review-question-2}}
+
+1/1 point (graded)
+
+\emph{Isomap is most beneficial\ldots{}}
+
+\begin{itemize}
+\tightlist
+\item
+  When your data lacks an inherent manifold
+\item
+  \textbf{When a non-linear, geometric structure is expressed in your
+  data correct}
+\item
+  When you are uncertain how many samples are needed to capture the
+  underlying nature of your data
+\item
+  When your high dimensionality data has a hidden, linear relationship
+  expressed within it
+\end{itemize}
+
+\hypertarget{assignment-4}{%
+\paragraph{Assignment 4}\label{assignment-4}}
+
+\hypertarget{lab-assignment-4}{%
+\subparagraph{Lab Assignment 4}\label{lab-assignment-4}}
+
+After having a brief conversation with
+\href{https://en.wikipedia.org/wiki/Joshua_Tenenbaum}{Joshua Tenenbaum},
+the primary creator of the isometric feature mapping algorithm, it only
+seems right that we make your first lab assignment be replicating his
+canonical, dimensionality reduction research experiment for visual
+perception! In fact, you will also be using his
+\href{https://github.com/authman/DAT210x/blob/master/Cached\%20Datasets/face_data.zip}{original
+dataset}
+(\href{https://web.archive.org/web/20160913051505/http://isomap.stanford.edu/datasets.html}{cached
+website}{]}) from December 2000. It consists of 698 samples of
+4096-dimensional vectors. These vectors are the coded brightness values
+of 64x64-pixel heads that have been rendered facing various directions
+and lighted from many angles. Replicate Dr.~Tenenbaum's experiment by:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Applying both PCA and Isomap to the 698 raw images to derive 2D
+  principal components and a 2D embedding of the data's intrinsic
+  geometric structure.
+\item
+  Project both onto a 2D scatter plot, with a few superimposed face
+  images on the associated samples.
+\item
+  Extra: If you're feeling fancy, increase n\_components to three, and
+  plot your scatter plot on a 3D chart.
+\end{enumerate}
+
+\textbf{NOTE:} If you encounter issues with loading .mat files using
+SciPy, you might want to see this
+\href{http://stackoverflow.com/questions/35283073/scipy-io-loadmat-doesnt-work}{Stack
+Overflow} post and check the version of SciPy you're using.
+
+\hypertarget{lab-questions}{%
+\subparagraph{Lab Questions}\label{lab-questions}}
+
+4 points possible (graded) (option in bold text is the answer)
+
+Between linear PCA and the non-linear Isomap, which algorithm is better
+able to capture the true nature of the faces dataset when reduced to two
+component?
+
+\begin{itemize}
+\tightlist
+\item
+  PCA
+\item
+  \textbf{IsoMap}
+\end{itemize}
+
+Each coordinate axis of your 3D manifold should correlate highly with
+one degree of freedom from the original, underlying data. In the isomap
+plot of the first two components (0 and 1), which `\textbf{degree of
+freedom}' do you think was encoded onto first component (the X-axis)
+encoded? In other words, what varies as you move horizontally in your
+manifold rendering?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Left and Right Head Position}
+\item
+  Down and Up Head Position
+\item
+  Lighting Position
+\item
+  Something else
+\end{itemize}
+
+Alter your code to graph the second and third components (index=1 and 2)
+instead of the 0th and 1st, for both PCA and Isomap. Look \emph{closely}
+at the Isomap plot. Can you tell what `degree of freedom' the X axis
+represents?
+
+\begin{itemize}
+\tightlist
+\item
+  Left and Right Head Position
+\item
+  \textbf{Down and Up Head Position}
+\item
+  Lighting Position
+\item
+  Something else
+\end{itemize}
+
+In his experiment, Dr.~Tenenbaum set his K-parameter (n\_neighbors is
+SciKit-Learn) to 8. Try reducing that figure down to 3 and re-running
+your code. Does the X-Axis still represent the same degree of freedom?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Yes}
+\item
+  No
+\end{itemize}
+
+\hypertarget{assignment-5}{%
+\subsubsection{Assignment 5}\label{assignment-5}}
+
+\hypertarget{lab-assigment-5}{%
+\paragraph{Lab Assigment 5}\label{lab-assigment-5}}
+
+Now that you've had your first taste of isomap, let's take your
+knowledge of it to the next level.
+
+Whatever your high-dimensional samples are, be they images, sound files,
+or thoughtfully collected attributes, they can all be considered single
+points in a high dimensional feature-space. Each one of your
+observations is just a single point. Even with a high dimensionality,
+it's possible that most or all your samples actually lie on a lower
+dimension surface. Isomap aims to capture that embedding, which is
+essentially the motion in the underlying, non-linear degrees of freedom.
+
+By testing isomap on a carefully constructed dataset, you will be able
+to visually confirm its effectiveness, and gain a deeper understanding
+of how and why each parameter acts the way it does. The \textbf{ALOI},
+\href{http://aloi.science.uva.nl/}{Amsterdam Library of Object Images},
+hosts a huge collection of 1000 small objects that were photographed in
+such a controlled environment, by systematically varying the viewing
+angle, illumination angle, and illumination color for each object
+separately. To really drive home how well isomap does what it claims,
+this lab will make use of two image sets taken from the ALOI's
+collection.
+
+Manifold extraction, and isomap specifically are really good with vision
+recognition problems, speech problems, and many other real-world tasks,
+such as identifying similar objects, or objects that have undergone some
+change. In the case of the 3D rotating object such as the office chair
+example from earlier, if every pixel is a feature, at the end of the
+day, the manifold surface is parametrizable by \emph{just} the angle of
+the chair---a single feature!
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start by having a look through the Module4/Datasets/ALOI/ directory.
+  There are two directories filled with 192 x 144 pixel images. Identify
+  their ordering and try to figure out what's changing between the
+  images. They might not be perfectly ordered, but that doesn't matter
+  to isomap.
+\item
+  Create a regular Python list object. Then, write a for-loop that
+  iterates over the images in the Module4/Datasets/ALOI/32/ folder,
+  appending each of them to your list. Each .PNG image should first be
+  loaded into a temporary NDArray, just as shown in the Feature
+  Representation reading.
+
+  \emph{Optional: Resample your images down by a factor of two if you
+  have a slower computer. You can also convert the image from
+  \texttt{0-255} to \texttt{0.0-1.0} if you'd like, but that will have
+  no effect on the algorithm's results.}
+\item
+  Convert the list to a dataframe and run isomap on it to compute the
+  lower dimensional embedding. Be sure to set n\_components to 3 so you
+  can visualize your manifold. You can also set the neighborhood size to
+  six.
+\item
+  Plot the first two manifold components using a 2D scatter plot, then
+  plot the first three components using a 3D scatter plot. Run your
+  assignment and then answer the questions below.
+\end{enumerate}
+
+\hypertarget{lab-questions-1}{%
+\subparagraph{Lab Questions}\label{lab-questions-1}}
+
+2 points possible (graded)
+
+Please describe the results of your isomap embedding--either the 3D or
+2D one, it doesn't matter:
+
+\begin{itemize}
+\tightlist
+\item
+  It is completely sporadic. It's hard to detect the pattern at this
+  point, since we discarded too many dimensions
+\item
+  \textbf{The embedding appears to follow an easily traversable, 3D
+  spline correct}
+\item
+  It looks like a geometric pattern, but we probably need to increase
+  the neighborhood resolution before a discernible shape emerges
+  incorrect
+\item
+  Isomap rendered the result as a straight line, as expected, since only
+  a single degree of freedom is altered in the images
+\end{itemize}
+
+\textbf{Explanation}
+
+Encode each image as a single sample. Since SciPy loads images into an
+NDArray, rather than converting the individual NDArrays to Pandas
+DataFrames and concatenating DataFrames, it makes more sense to just
+append all the NDArrays to a list and mass convert the thing in one go.
+
+When rendering the manifold, you should see a smooth curve. In 2D, it
+should look like a near perfect circle (check your window axes scale, if
+your X-Axis is stretched). In 3D, it should look like the circle as
+well, but with the Y-axis values oscillating up and down as if bound to
+a sine curve:
+
+Try reducing the `n\_neighbors' parameter one value at a time. Keep
+re-running your assignment until the results look visible different.
+What is the smallest neighborhood size you can have, while maintaining
+similar manifold embedding results?
+
+\begin{itemize}
+\tightlist
+\item
+  1
+\item
+  \textbf{2}
+\item
+  3
+\item
+  4
+\item
+  5
+\item
+  6
+\end{itemize}
+
+\textbf{Explanation} The correct number is two. The dataset was
+generated carefully enough that there really shouldn't be any cause for
+noise in the path, unless you introduced it.
+
+\hypertarget{lab-questions-continued}{%
+\subparagraph{Lab Questions (Continued)}\label{lab-questions-continued}}
+
+Almost done! Two more steps to complete this lab:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Once you're done answering the first three questions, right before you
+  converted your list to a dataframe, add in additional code which also
+  appends to your list the images in the Module4/Datasets/ALOI/32\_i
+  directory.
+\item
+  Create a colors Python list. Store a `b' in it for each element you
+  load from the /32/ directory, and an `r' for each element you load
+  from the `32\_i' directory. Then pass this variable to your 2D and 3D
+  scatter plots, as an optional parameter c=colors. Re-run your
+  assignment and answer the final question below.
+\end{enumerate}
+
+Reset your `n\_neighbors' if you changed it from 6. After adding in the
+additional images from the 32\_i dataset, do examine your 2D and 3D
+scatter plots again. Have the new samples altered the shape of your
+original (blue) manifold?
+
+\begin{itemize}
+\tightlist
+\item
+  No, not in the slightest
+\item
+  \textbf{Only very slightly\ldots{} correct}
+\item
+  It looks like a completely different shape
+\end{itemize}
+
+What is the arrangement of the newly added, red samples?
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Isomap rendered the result as a straight line, intersecting
+  the original manifold}
+\item
+  They are completely sporadic compared to the original manifold, so no
+  real pattern exist incorrect
+\item
+  They are aligned in a smaller circle, intersecting the original
+  manifold
+\end{itemize}
+
+    \hypertarget{data-cleaning}{%
+\subsubsection{Data Cleaning}\label{data-cleaning}}
+
+In \emph{data wrangling}, irrelevant, incomplete, and missing data is
+either defaulted to a specific value or removed entirely. NaNs are
+stripped out, typographical errors are patched, and perhaps even some
+data normalization occurs. The goal of \emph{data cleansing} is to
+\emph{take wrangling a step further by rectifying inaccurate and
+inconsistent data to standardize it}. Inconsistent data can lead to
+false intelligence being produced by your machine learning algorithms,
+or no intelligence at all.
+
+Simple data cleansing tasks might be automated and applied out of the
+box. More occupation specific tasks require you fully understand the
+working environment that generated your raw data. Knowledge of the range
+of values you expect to see for a particular feature will help you find
+any anomalies that need attention.
+
+A classical example of when cleansing is necessary is when data comes
+from multiple sources. If, on average, a specific source consistently
+reports figures offset from others, identifying the source of the error,
+be it a faulty sensor, or bad reporting, etc., and then making
+calculated adjustments is a way to improve your overall data accuracy.
+\emph{But without carefully balancing keeping your data as close as
+possible to its raw from and making these error corrections, you might
+get accused of cooking your data}. After all, \textbf{it's always
+possible that there is no error at all}.
+
+\hypertarget{case-study}{%
+\subsubsection{Case study}\label{case-study}}
+
+Climate change is a hotly debated topic. Climatologist claim the world
+is at a teetering point, and the damages will soon be irreversible if we
+don't make swift changes. Opponents claim there is no solid proof that
+demonstrates climate change is real, and that the data behind it is
+\emph{cooked}, or falsified. Is there any truth to their claim?
+
+The \textbf{NOAA}, National Oceanic and Atmospheric Administration, has
+long produced the only spatially complete, long-term (1895-2013) dataset
+for climate analyses within the US. In the Climate Divisional Dataset,
+each state is represented by 6-10 climate divisions, as shown on the map
+below. The \textbf{monthly} temperature readings per climate division
+are then calculated by averaging the \textbf{daily} observations from
+their ground stations. By using climate divisions and not individual
+weather stations, and by using monthly divisional averages for
+data-samples, the overall data collection process was eased
+considerably. After all, we are talking about government agency that
+formed over \href{http://celebrating200years.noaa.gov/}{200 years ago}!
+Another added benefit is that less concern need be placed on the
+accuracy of specific station measurements, in case of local
+inconsistencies. Everything should just get \emph{smoothed over} by
+averaging out.
+
+In 2012, the NOAA must have come into better funding because they
+exerted an open effort to recalculate their historical climate dataset.
+They added in thousands of past observations that had only recently been
+digitized (remember when we used to use paper and pencil?), and adjusted
+their interpolation formula to remove some \emph{known biases}, such as
+jumps introduced by replacing instruments, observation practices such as
+differences in readings based on when in the day temperatures are
+recorded, inaccuracies caused by station moves, urbanization around the
+station, etc. The NOAA further went on to retrospectively adjust their
+historic dataset as well, to be more in line with the current
+observations at each station, and to make use of the new interpolation
+method.
+
+Skeptics were quick to criticize the NOAA's alterations to the historic
+dataset, claiming they've manipulated temperature records to create a
+warming trend by literally \emph{cooling} the past and \emph{warming}
+the present. It seemed that early decades of temperature records were
+consistently adjusted downward, and the current, century-long
+temperature trend was higher than in the original dataset. Even some of
+the historic `hottest days ever' lost their titles.
+
+Part of the data science umbrella of topics include the use of the
+scientific method. When experimenting, a control is usually introduced
+to reduce variations in the data due to anything except the features
+being measured. Knowing how to apply and what type of control to use
+typically requires human intervention, as we haven't found a way to get
+machines to learn to automatically account for that just yet. There are
+different types of controls, for instance negative control or
+randomization, which are used depending on the type of experiment being
+conducted and the data being gathered. Unfortunately, we only have one
+planet to test with and can't go backwards in time. Retrospective
+efforts like the NOAA's to polish up their data, will likely continue to
+be met with some level skepticism---at least until it gets a lot warmer.
+
+\hypertarget{knowledge-checks}{%
+\paragraph{Knowledge Checks}\label{knowledge-checks}}
+
+\hypertarget{review-question}{%
+\subparagraph{Review Question}\label{review-question}}
+
+1/1 point (graded)
+
+Given the following options:
+
+\begin{itemize}
+\item
+  If you encounter errors in your data, don't let anyone know and try to
+  hide them by deleting the affected rows, or by cooking your data.
+\item
+  While gathering data, identify issues that might cause
+  inconsistencies, and capture additional features that'll help you
+  rectify them.
+\item
+  cRetrospectively adjust your data to account for discovered problems.
+\end{itemize}
+
+Order these options from most desirable to least desirable:
+
+\begin{itemize}
+\tightlist
+\item
+  A, B, C
+\item
+  A, C, B
+\item
+  B, A, C
+\item
+  \textbf{B, C, A}
+\item
+  C, A, B
+\item
+  C, B, A
+\end{itemize}
+
+\hypertarget{further-reading}{%
+\paragraph{Further Reading}\label{further-reading}}
+
+\hypertarget{dive-deeper}{%
+\subparagraph{Dive Deeper}\label{dive-deeper}}
+
+Congratulations on making it this far! In the previous module, you
+directly explored your data using many visualizations. This time you
+learned how to take complex datasets and simplify them using two popular
+methods: keeping the most variant set of orthogonal components, and
+manifold multi-dimensional scaling of your sample's distance map.
+
+After that you learned about a way errors can creep into your dataset
+and potential methods of handling that. Keep all these techniques fresh
+in your toolbox by being sure you record some notes about them in the
+transforming section of your course map. Remember, there is no hard
+order you must stick to while applying these methods. Try something out,
+visualize your data, then continue experimenting until you get your
+desired results.
+
+Below, as usually, we've included some added details about the
+techniques you just studied in case you're interested in further
+broadening your knowledge, and taking it to the next level! For
+instance, regarding the isomap lab, you learned what each parameter does
+and how isomap works; but one thing you might be wondering from our
+examples is how interpolation between video frames is performed using
+isomap. You know it's impossible to .inverse\_transform() an isomap
+manifold, so how in the world might you go about interpolating data in
+your original feature space / dataset? Check below!
+
+\hypertarget{pca}{%
+\subparagraph{PCA}\label{pca}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://onlinecourses.science.psu.edu/stat505/node/54}{Interpreting
+  PCA}
+\item
+  \href{http://www.stat.cmu.edu/~cshalizi/350/lectures/10/lecture-10.pdf}{Another
+  Method for Interpreting PCA}
+\item
+  \href{http://setosa.io/ev/principal-component-analysis/}{Interactive
+  PCA Demo}
+\item
+  \href{https://stats.stackexchange.com/questions/103953/pca-on-binary-data}{PCA
+  on Binary Data}
+\item
+  \href{http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf}{The
+  Best Explanation of the Math Behind PCA You'll Ever Read}
+\item
+  \href{http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.RandomizedPCA.html}{RandomizedPCA}
+\item
+  \href{https://stats.stackexchange.com/questions/62677/pca-on-correlation-or-covariance-does-pca-on-correlation-ever-make-sense\#62699}{Correlation
+  or Covariance?}
+\end{itemize}
+
+\hypertarget{isomap}{%
+\subparagraph{Isomap}\label{isomap}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://web.mit.edu/cocosci/Papers/sci_reprint.pdf}{The Historic
+  Stanford Isomap Paper, By Josh Tenenbaum}
+\item
+  \href{https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction}{Lower
+  Dimensional Embedding}
+\item
+  \href{https://www.quora.com/What-is-the-Isomap-algorithm}{Manifold
+  Learning}
+\item
+  \href{http://cs229.stanford.edu/proj2012/ElGhazzalRobaszkiewicz-InterpolatingImagesBetweenVideoFramesUsingNonLinearDimensionalityReduction.pdf}{Interpolating
+  Images Between Video Frames Using Non-Linear Dimensionality Reduction}
+\item
+  \href{}{Cambridge Hand Gesture Data set}
+\end{itemize}
+
+\hypertarget{climate-change}{%
+\subparagraph{Climate Change}\label{climate-change}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.ncdc.noaa.gov/monitoring-references/maps/us-climate-divisions.php}{NOAA
+  U.S. Climate Divisional Dataset}
+\item
+  \href{https://www.ncdc.noaa.gov/temp-and-precip/divisional-comparison/}{Interactive
+  Discovery Tool For Comparing Raw Historical Data With the `Enhanced'
+  Data} \textbar{} Flash Based
+\item
+  \href{http://fusion.net/story/341420/the-maddening-world-of-false-equivalence-media-from-a-climate-reporter-who-knows/}{False
+  Equivalence} \textbar{} Logic
+\item
+  \href{https://en.wikipedia.org/wiki/Scientific_control\#Types_of_control}{Control
+  Types}
+\end{itemize}
 
 
     % Add a bibliography block to the postdoc
